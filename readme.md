@@ -1,2 +1,2 @@
-# Alko Search Tool \n
+# Alko Search Tool 0.1
 By Matheos Mattsson
