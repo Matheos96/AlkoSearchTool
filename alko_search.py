@@ -25,10 +25,10 @@ sorting = 'name-asc' #By name, ascending
 
 def set_sorting():
 	print("\n**************Select sorting method**************\n"+
-	"Alphabetical Order A-Ö (default): 1\n"+
-	"Alphabetical Order Ö-A: 2"+
-	"\nBy Price, lowest first: 3\n"+
-	"By Price, highest first: 4\n")
+	"1. Alphabetical Order A-Ö (default)\n"+
+	"2. Alphabetical Order Ö-A"+
+	"\n3. By Price, lowest first\n"+
+	"4. By Price, highest first\n")
 	option = input("Select an option: ")
 	global sorting
 	if option=='1':
@@ -47,9 +47,11 @@ def printProducts(uri, searchTerm, nr_of_pages):
 		page = client.get(url)
 		parsed = BeautifulSoup(page.content, 'lxml')
 		products_html_list = parsed.findAll('div', attrs={'role': 'listitem'})
-		print("\n**************Search term: '"+searchTerm+"' Page number: "+str(nr)+"**************\n")
+		print("\n**************Search term: '"+searchTerm+"' Page number: "+str(nr+1)+"/"+str(nr_of_pages)+"**************\n")
 		for p in products_html_list:
-			print(str(product_no)+". "+str(p.find('h4', attrs={'class': 'product-name-aria'}).text.strip()) + " " + str(p.find('span', attrs={'class': 'price price-wrapper module-price'}).get('content'))+"€")
+			print(str(product_no)+". "+str(p.find('h4', attrs={'class': 'product-name-aria'}).text.strip()) + " " +
+			str(p.find('div', attrs={'class': 'product-volume'}).text.strip())+"  "+
+			str(p.find('span', attrs={'class': 'price price-wrapper module-price'}).get('content'))+"€")
 			print("-------------------------------------------------------------")
 			product_no+=1
 		
@@ -72,8 +74,8 @@ print("---------------------- Welcome to Alko Search Tool 0.1 ------------------
 while True:
 	try:
 		print("\n**************Select action**************\n"+
-		"Search: 1\n"+
-		"Set sorting method: 2\n"+
+		"1. Search\n"+
+		"2. Set sorting method\n"+
 		"Type 'exit' to quit")
 		response = input("Select an option (default: 1): ")
 		if response=="":
