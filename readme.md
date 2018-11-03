@@ -9,3 +9,5 @@ By Matheos Mattsson
 - **lxml**
 
 Installation: *pip install -r requirements.txt*
+
+Usage: *python alko_search.py*
