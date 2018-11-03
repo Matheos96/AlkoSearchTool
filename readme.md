@@ -4,7 +4,7 @@ By Matheos Mattsson
 ***Python 3.X only***
 
 ## Requirements
-- **Beautifulsoup4**
+- **Beautiful Soup 4**
 - **requests**
 - **lxml**
 
