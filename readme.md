@@ -1,4 +1,4 @@
-# Alko Search Tool 0.1
+# Alko Search Tool 0.2
 By Matheos Mattsson
 
 ***Python 3.X only***
