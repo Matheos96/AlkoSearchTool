@@ -22,6 +22,8 @@ client = requests.session()
 # defaults
 get_url = 'https://www.alko.fi/tuotteet?SearchTerm='
 sorting = 'name-asc'  # By name, ascending
+SEARCH_URL_DEFAULT = "https://www.alko.fi/INTERSHOP/web/WFS/Alko-OnlineShop-Site/fi_FI/-/EUR/ViewParametricSearch-" \
+                     "ProductPagingRandom?Context=ViewParametricSearch-ProductPagingRandom"
 
 
 def set_sorting():
@@ -66,7 +68,8 @@ def search():
     url = get_url + search_term
     page = client.get(url)
     parsed = BeautifulSoup(page.content, 'lxml')
-    search_url = str(parsed.find('form', attrs={'name': 'paginating'}).get('action'))
+    # search_url = str(parsed.find('form', attrs={'name': 'paginating'}).get('action'))
+    search_url = SEARCH_URL_DEFAULT
     search_parameter = str(parsed.find('input', attrs={'name': 'SearchParameter'}).get('value'))
     nr_of_pages = int(
         int(parsed.find('span', attrs={'class': 'color-primary'}).text.strip()) / 12) + 1  # Paging starts at 0
