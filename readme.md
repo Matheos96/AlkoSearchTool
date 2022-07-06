@@ -1,7 +1,7 @@
-# Alko Search Tool 0.2
+# Alko Search Tool 0.3
 By Matheos Mattsson
 
-***Python 3.X only***
+***Python 3 only***
 
 ## Requirements
 - **Beautiful Soup 4**
